@@ -1,27 +1,35 @@
+//initialize destination url variable
 var gotoLink = "";
-var shortCode = "63901";
-var keyword = "HELLO";
+
+//replace 12345 with your short code
+var shortCode = "12345";
+
+//replace KEYWORD with your keyword
+var keyword = "KEYWORD";
+
 document.addEventListener('DOMContentLoaded', function() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    //Windows phone is not supported. Display not supported message
     if (/windows phone/i.test(userAgent)) {
-        console.log("Windows Phone");
         document.getElementById("not_supported").style.display = 'inline';
+
+    //Redirect to SMS url with Android syntax
     } else if (/android/i.test(userAgent)) {
-        console.log("Android");
         document.getElementById("vibes_tap2join_box").style.display = 'inline';
         gotoLink = "sms:" + shortCode + "?body=" + keyword;
+        window.location.replace(gotoLink);
+
+    //Redirect to SMS url  with iOS syntax
     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        console.log("iOS");
         document.getElementById("vibes_tap2join_box").style.display = 'inline';
         gotoLink = "sms:" + shortCode + "&body=" + keyword;
+        window.location.replace(gotoLink);
+
+    //No mobile device detected. Display desktop fallback message
     } else {
-        console.log("unknown");
         document.getElementById("desktop_fallback").style.display = 'inline';
     }
 }, false);
-var openMsg = function() {
-    console.log("openMsg");
-    window.location.replace(gotoLink);
-    return false;
-}
+
 
