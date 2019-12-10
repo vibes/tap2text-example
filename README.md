@@ -15,7 +15,7 @@ var keyword = "KEYWORD";
 ```
 
 #### For Mobile Web
-In your web page, first add the HTML that will render the call to action, updating the default short code and keyword to match your own (see `/index.html`):
+In your web page, first add the HTML that will render the call to action, updating the default short code and keyword to match your own. This example includes optional fallback messages for desktop browsers or unsupported devices (see `/index.html`):
 
 ```
 <!-- Android or iOS call to action-->
